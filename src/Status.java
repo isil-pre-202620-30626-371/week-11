@@ -1,7 +1,17 @@
 public enum Status {
-    REGISTERED,
-    ADMITTED,
-    ELIGIBLE,
-    WAITLISTED,
-    REJECTED
+    REGISTERED("Registered"),
+    ADMITTED("Admitted"),
+    WAITLISTED("Waitlisted"),
+    REJECTED("Rejected");
+
+    private final String description;
+
+    Status(String description) {
+        this.description = description;
+    }
+
+    @Override 
+    public String toString() {
+        return description;
+    }
 }
