@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Workshop {
@@ -48,8 +49,54 @@ public class Workshop {
     }
 
     public void registerStudent(Student student) {
-        student.setStatus(Status.REGISTERED);
-        students.add(student);
+
+        if (!students.contains(student)) {
+            student.setStatus(Status.REGISTERED);
+            students.add(student);
+        }
+    }
+
+    public void displayWorkshopInfo() {
+
+        System.out.println("Workshop: " + name);
+        for (Student student : students) {
+            System.out.println(student);
+        }
+
+        System.out.println();
+    }
+
+    public void assignRandomScore() {
+        for (Student student : students) {
+            int score = (int) (Math.random() * 21);
+            student.setScore(score);
+        }
+    }
+
+    public void sortStudents() {
+        students.sort(Comparator.comparing(Student::getScore).reversed().thenComparing(Student::getId));
+    }
+
+    public void assignVacancies() {
+        int admitted = 0;
+
+        for (Student student: students) {
+
+            if (student.getScore() < minimumScore) {
+                student.setStatus(Status.REJECTED);
+                continue;
+            }
+
+            if (admitted < capacity) {
+                student.setStatus(Status.ADMITTED);
+                admitted++;
+                continue;
+            }
+
+            student.setStatus(Status.WAITLISTED);
+
+
+        }
     }
 
 }

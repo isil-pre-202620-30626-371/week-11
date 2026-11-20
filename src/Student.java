@@ -46,4 +46,20 @@ public class Student {
         return "Student | id: " + id + ", name: " + name + ", score: " + score + ", status: " + (status == null ? "Pending" : status);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Student other = (Student) obj;
+        return other.id == this.id && other.name.equals(this.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
+    }
 }

@@ -12,7 +12,7 @@ public class App {
         Student student9 = new Student(9, "Robert Taylor");
         Student student10 = new Student(10, "Jennifer White");
 
-        Workshop workshop = new Workshop("Java Programming", 15, 60);
+        Workshop workshop = new Workshop("Java Programming", 3, 15);
         workshop.registerStudent(student1);
         workshop.registerStudent(student2);
         workshop.registerStudent(student3);
@@ -24,6 +24,18 @@ public class App {
         workshop.registerStudent(student9);
         workshop.registerStudent(student10);
 
+        workshop.displayWorkshopInfo();
+
+        workshop.assignRandomScore();
+
+        workshop.displayWorkshopInfo();
+
+        workshop.sortStudents();
+
+        workshop.displayWorkshopInfo();
+
+        workshop.assignVacancies();
+        
+        workshop.displayWorkshopInfo();
     }
 }
-
